@@ -1,0 +1,64 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+void compute (double previousbalance[], double payments [], double charges [], double & monthendbalance, const int size);
+
+
+int main()
+{
+
+	const int size = 6;
+
+
+	int customer [size] = {0};
+	double previousbalance [size] = {0};
+	double payments [size] = {0};
+	double charges [size] = {0};
+	double monthendbalance = 0;
+
+
+	for (int x = 0; x < size; x++)
+	{
+		cout <<"Enter the customer number: ";
+		cin>>customer[x];
+
+		cout <<"Enter the previous balance: ";
+		cin>>previousbalance[x];
+
+		cout <<"Enter the payments: ";
+		cin>>payments[x];
+
+		cout<<"Enter the charges: ";
+		cin>>charges[x];
+
+	}
+
+	
+	compute (previousbalance, payments, charges, monthendbalance, size);
+
+	cin.get();
+	cin.get();
+	cin.get();
+	return 0;
+
+}
+
+
+void compute (double previousbalance[], double payments [], double charges [], double & monthendbalance, const int size)
+{
+
+	double newbalance = 0, financecharge = 0;
+
+	for (int j = 0; j <size; j++)
+	{
+
+		newbalance = previousbalance[j] - payments [j] + charges [j];
+		financecharge = (newbalance * 12) / 100;
+		monthendbalance = newbalance + financecharge;
+        cout <<"\nThe month end balance is: " <<monthendbalance;
+
+	}
+
+}
